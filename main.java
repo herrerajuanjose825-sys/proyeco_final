@@ -8,6 +8,8 @@ public class main {
         Scanner sc= new Scanner(System.in);
         metodos_clientes mc =new metodos_clientes();
         LinkedList<cliente> listacliente = new LinkedList<>();
+        metodos_vehiculo v =new metodos_vehiculo();
+        LinkedList<vehiculo> listavehiculo = new LinkedList<>();
         while (pedir) {
             boolean r=true;
             System.out.println("=== MENU PRINCIPAL ===");
@@ -51,7 +53,7 @@ public class main {
                                     break;
                             
                                 default:
-                                    System.out.println("porfvor ingrese u dato valido ");
+                                    System.out.println("porfvor ingrese un dato valido ");
                                     break;
                             }
                         }
@@ -68,16 +70,16 @@ public class main {
                                 
                             switch (opt1) {
                                 case 1:
-                                    
+                                        listavehiculo=v.llena_vehiculos(listavehiculo, sc);
                                     break;
                                 case 2:
-                                    
+                                        listavehiculo=v.modificar_vehiculo(listavehiculo, sc);
                                     break;
                                 case 3:
-                                    
+                                        
                                     break;
                                 case 4:
-                                    
+                                        
                                     break;
                                 case 5:
                                         r=false;
