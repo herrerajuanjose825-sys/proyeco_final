@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Iterator;
+
 public class metodos_vehiculo {
     
     public  LinkedList<vehiculo> llena_vehiculos (LinkedList<vehiculo> l , Scanner sc){
@@ -23,7 +25,7 @@ public class metodos_vehiculo {
             System.out.println("Desea ingresar otro vehiculo 1) si  2) no ");
             int opt=sc.nextInt();
 
-            if(opt!=2){
+            if(opt!=1){
                 segir=false;
             }
         }
@@ -31,36 +33,91 @@ public class metodos_vehiculo {
     }
 
     public LinkedList<vehiculo> modificar_vehiculo (LinkedList<vehiculo> l , Scanner sc){
-        boolean bandera=true;
-        while(bandera){
-            if(l.isEmpty()){
-                System.out.println("L lista esta vacia, ingrese valores");
-                bandera=false;
+        if(l.isEmpty()){
+            System.out.println("Lista de vehiculos vacia, porfavor igrese datos");
+            return l;
+        }
+
+        System.out.println("Ingrese la placa del vehiculo a modificar");
+        String placa= sc.next();
+        boolean bandera=false;
+        for (vehiculo o : l) {
+            if(o.getPlaca().equals(placa)){
+                bandera=true;
+                System.out.println("Ingrese los datos del vehiculo");
+                System.out.println("Placa");
+                o.setPlaca(sc.next());
+                System.out.println("Marca");
+                o.setMarca(sc.next());
+                System.out.println("Modelo");
+                o.setModelo(sc.nextInt());
+                System.out.println("Precio");
+                o.setPrecio(sc.nextFloat());
+                System.out.println("Estado");
+                o.setEstado(sc.next());
+                System.out.println("vehiculo modificado");
                 break;
             }
-            System.out.println("Ingrese la placa del vehiculo a modificar");
-            String p=sc.next();
-            for (vehiculo o : l) {
-                if(o.getPlaca().equals(p)){
-                    System.out.println("Ingrese los datos del vehiculo");
-                    System.out.println("Placa");
-                    o.setPlaca(sc.next());
-                    System.out.println("Marca");
-                    o.setMarca(sc.next());
-                    System.out.println("Modelo");
-                    o.setModelo(sc.nextInt());
-                    System.out.println("Precio");
-                    o.setPrecio(sc.nextFloat());
-                    System.out.println("Estado");
-                    o.setEstado(sc.next());
-                    System.out.println("vehiculo modificado");
-                    bandera=false;
-                    }
-                    else{
-                        System.out.println("Placa no encontrada ingrese una placa registrada");
-                    }
+        }
+        if(!bandera){
+            System.out.println("Vehiculo no encontrado");
+        }
+        return l;
+    }
+
+    public LinkedList<vehiculo> borrar_vehiculo (LinkedList<vehiculo> l , Scanner sc){
+        if(l.isEmpty()){
+            System.out.println("Lista vacia, ingrese datos ");
+            return l;
+        }
+
+            System.out.println("Ingrese la plca del vehiculo que desea eliminar");
+            String placa=sc.next();
+            Iterator<vehiculo> it = l.iterator();
+            boolean encontrado=false;
+            while(it.hasNext()){
+                vehiculo v =it.next();
+
+                if(v.getPlaca().equals(placa)){
+                    it.remove();
+                    encontrado=true;
+                    System.out.println("vehiculo eliminado correctamente");
+                break;
+
+                }
             }
 
+            if(!encontrado){
+                System.out.println("vehiculo no encontrado, ingrese unaplaca existente");
+            }
+    
+        return l;
+    }
+
+    public LinkedList<vehiculo> buscar_vehiculo (LinkedList<vehiculo> l , Scanner sc){
+        if(l.isEmpty()){
+            System.out.println("La lista esta vacia, ingrese datos");
+            return l;
+        }
+
+        System.out.println("Ingrese la placa del vehiculo que desea buscar");
+        String placa= sc.next();
+        boolean encontrado=false;
+        for (vehiculo c : l) {
+            if(c.getPlaca().equals(placa)){
+                encontrado=true;
+                System.out.println("vehiculo  encontrado" );
+                System.out.println("Placa:" + c.getPlaca());
+                System.out.println("Marca:" + c.getMarca() );
+                System.out.println("Modelo:" + c.getModelo());
+                System.out.println("Precio:" + c.getPrecio());
+                System.out.println("Estado:" + c.getEstado());
+                break;
+            }
+        }
+
+        if(!encontrado){
+            System.out.println("placa no encontrada, ingrese una placa existente");
         }
         return l;
     }

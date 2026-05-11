@@ -15,8 +15,6 @@ public class main {
             System.out.println("=== MENU PRINCIPAL ===");
             System.out.println("Bienvenido");
             System.out.println("Que desea realizar");
-            System.out.println("----------------------------");
-            System.out.println("----------------------------");
             System.out.println("1) Gestion de clientes ");
             System.out.println("2) Gestion de vehiculos");
             System.out.println("3) Gestionar contratos");
@@ -76,17 +74,17 @@ public class main {
                                         listavehiculo=v.modificar_vehiculo(listavehiculo, sc);
                                     break;
                                 case 3:
-                                        
+                                        listavehiculo=v.borrar_vehiculo(listavehiculo, sc);
                                     break;
                                 case 4:
-                                        
+                                        listavehiculo=v.buscar_vehiculo(listavehiculo, sc);
                                     break;
                                 case 5:
                                         r=false;
                                     break;
                             
                                 default:
-                                    System.out.println("porfvor ingrese u dato valido ");
+                                    System.out.println("porfvor ingrese un dato valido ");
                                     break;
                             }
                         }
@@ -120,7 +118,7 @@ public class main {
                                     break;
                             
                                 default:
-                                    System.out.println("porfvor ingrese u dato valido ");
+                                    System.out.println("porfvor ingrese un dato valido ");
                                     break;
                             }
                         }

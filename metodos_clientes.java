@@ -9,11 +9,11 @@ public class metodos_clientes {
         while (continuar) {
         cliente c= new cliente();
         System.out.println("Ingrese el nombre");
-        c.setNombre(sc.nextLine());
+        c.setNombre(sc.next());
         System.out.println("Ingrese la cedula");
         c.setCedula(sc.next());
         System.out.println("Ingrese el apellido");
-        c.setApellido(sc.nextLine());
+        c.setApellido(sc.next());
         System.out.println("Ingrese la direccion ");
         c.setDireccion(sc.next());
         System.out.println("Ingrese su numero movil ");
